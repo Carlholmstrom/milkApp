@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Alegreya&display=swap");
+
+.header-container {
+  background-color: #fff;
+  color: #fabbb6;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #b3b3b3;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 3.5em;
+  margin-bottom: 10px;
+  font-family: "Alegraya";
+}
