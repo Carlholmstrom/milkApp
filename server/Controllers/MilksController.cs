@@ -78,12 +78,12 @@ namespace server.Controllers
                 }
             }
 
-            return NoContent();
+            return Ok(milk);
         }
 
         // POST: api/Milks
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+     /*    [HttpPost]
         public async Task<ActionResult<Milk>> PostMilk(Milk milk)
         {
           if (_context.Milks == null)
@@ -108,10 +108,10 @@ namespace server.Controllers
             }
 
             return CreatedAtAction("GetMilk", new { id = milk.Id }, milk);
-        }
+        } */
 
         // DELETE: api/Milks/5
-        [HttpDelete("{id}")]
+      /*   [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMilk(string id)
         {
             if (_context.Milks == null)
@@ -128,7 +128,7 @@ namespace server.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
-        }
+        } */
 
         private bool MilkExists(string id)
         {
