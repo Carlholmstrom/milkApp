@@ -33,8 +33,10 @@ const MilkList = () => {
             </div>
             <div className="milk-card-info-container">
               <div className="milk-card-name">{milk.name}</div>
-              <div className="milk-card-type">{milk.type}</div>
-              <div className="milk-card-storage">{milk.storage} liter</div>
+              <div className="milk-card-type-storage-container">
+                <div className="milk-card-type">{milk.type}</div>
+                <div className="milk-card-storage">{milk.storage} liters</div>
+              </div>
             </div>
           </div>
         ))}
