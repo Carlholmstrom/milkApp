@@ -5,11 +5,12 @@
 }
 
 .milk-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  margin-top: 6em;
+  width: 80%;
 }
 
 .milk-card {
@@ -21,10 +22,8 @@
   height: 380px;
   margin: 10px;
   padding: 10px;
-}
+  cursor: pointer;
 
-.milk-card-img-container {
-  flex: 1;
 }
 
 .milk-card-img {
@@ -34,30 +33,62 @@
 }
 
 .milk-card-info-container {
-  padding: 8px;
-  flex: 1;
+  padding: 4px;
 }
 
 .milk-card-name {
-  font-size: 20px;
+  font-size: 16px;
   margin-bottom: 8px;
   margin-top: 8px;
+  font-weight: bold;
 }
 
 .milk-card-type {
   text-align: left;
+  font-size: 14px;
+  color: #959595;
 }
 
 .milk-card-storage {
   text-align: right;
   color: #c2c09f;
+  font-size: 14px;
+}
+.milk-card-storage.red {
+  color: #b8797f;
 }
 
 .milk-card-type-storage-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
+}
+
+.search-container {
+  width: 75%;
+  text-align: center;
+}
+
+.search-container p{
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+
+input {
+  height: 50px;
+  font-size: 14px;
+  background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png);
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding-left: 40px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  box-shadow: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+
 }
 
 @media (max-width: 768px) {
@@ -70,4 +101,6 @@
     margin: 24px;
     padding: 24px;
   }
+  
 }
+
