@@ -42,9 +42,13 @@ const Order = ({ milk, setSelectedMilk }: IProps) => {
 
   return (
     <section>
-      <p>In stock: {detailsMilk.storage}</p>
+      <h2 className="order__name">{milk.name}</h2>
+      <p className="order__type">{detailsMilk.type}</p>
+      <p className={`order__storage ${detailsMilk.storage < 10 ? "red" : ""}`}>
+        {detailsMilk.storage} liters
+      </p>
       <label>
-        Order amount: {orderAmount}
+        Quantity (liters): {orderAmount}
         <input
           type="range"
           value={orderAmount}
@@ -53,11 +57,14 @@ const Order = ({ milk, setSelectedMilk }: IProps) => {
           max={detailsMilk.storage}
         />
       </label>
-      <div className="btn-container">
-        <button className="order-btn" onClick={handleOrderClick}>
+      <div className="order__btn-container">
+        <button className="order__btn" onClick={handleOrderClick}>
           Order
         </button>
-        <button className="back-btn" onClick={() => setSelectedMilk(null)}>
+        <button
+          className="order__back-btn"
+          onClick={() => setSelectedMilk(null)}
+        >
           Back
         </button>
       </div>

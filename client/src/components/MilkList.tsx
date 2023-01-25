@@ -46,19 +46,19 @@ const MilkList = () => {
   const numOfMilks = filteredMilkData.length;
 
   return (
-    <section className="milk-container">
+    <section className="milk__container">
         <ToastContainer
         autoClose={3000}
         draggable={false}
         icon={<CheckCircleIcon />}
-        className="green-toast"
+        className="green__toast"
         />
-        <div className="milk-grid">
+        <div className="milk__grid">
         {selectedMilk === null ? (
-            <form className="search-container">
+            <form className="milk__search">
             <label>
                 <input
-                className="search-input"
+                className="milk__search-input"
                 type="text"
                 placeholder="Search milk..."
                 onChange={handleSearch}
@@ -68,34 +68,23 @@ const MilkList = () => {
             </form>
         ) : null}
         {selectedMilk ? (
-            <article className="milk-card">
-            <div className="milk-card-img-container">
-                <img src={MilkImage} alt="milk" className="milk-card-img" />
-            </div>
-            <div className="milk-card-info-container">
-                <h2 className="milk-card-name">{selectedMilk.name}</h2>
-                <div className="milk-card-type-storage-container">
-                <span className="milk-card-type">{selectedMilk.type}</span>
-                <span
-                    className={`milk-card-storage ${
-                    selectedMilk.storage < 10 ? "red" : ""
-                    }`}
-                ></span>
-                </div>
+            <article className="milk__card">
+            <div className="milk__card-img-container">
+                <img src={MilkImage} alt="milk" className="milk__card-img" />
             </div>
             </article>
         ) : (
             filteredMilkData.map((milk) => (
-            <article className="milk-card" onClick={() => setSelectedMilk(milk)}>
-                <div className="milk-card-img-container">
-                <img src={MilkImage} alt="milk" className="milk-card-img" />
+            <article className="milk__card" onClick={() => setSelectedMilk(milk)}>
+                <div className="milk__card-img-container">
+                <img src={MilkImage} alt="milk" className="milk__card-img" />
                 </div>
-                <div className="milk-card-info-container">
-                <h2 className="milk-card-name">{milk.name}</h2>
-                <div className="milk-card-type-storage-container">
-                    <span className="milk-card-type">{milk.type}</span>
+                <div className="milk__card-info-container">
+                <h2 className="milk__card-name">{milk.name}</h2>
+                <div className="milk__card-type-storage-container">
+                    <span className="milk__card-type">{milk.type}</span>
                     <span
-                    className={`milk-card-storage ${
+                    className={`milk__card-storage ${
                         milk.storage < 10 ? "red" : ""
                     }`}
                     >
