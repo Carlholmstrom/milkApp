@@ -41,10 +41,10 @@ const Order = ({ milk, setSelectedMilk }: IProps) => {
   };
 
   return (
-    <div>
+    <section>
       <p>In stock: {detailsMilk.storage}</p>
       <label>
-        Order amount: {orderAmount} &nbsp;
+        Order amount: {orderAmount}
         <input
           type="range"
           value={orderAmount}
@@ -61,7 +61,7 @@ const Order = ({ milk, setSelectedMilk }: IProps) => {
           Back
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 

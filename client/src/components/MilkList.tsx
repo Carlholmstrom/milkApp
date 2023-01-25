@@ -46,70 +46,73 @@ const MilkList = () => {
   const numOfMilks = filteredMilkData.length;
 
   return (
-    <div className="milk-container">
-      <ToastContainer
+    <section className="milk-container">
+        <ToastContainer
         autoClose={3000}
         draggable={false}
         icon={<CheckCircleIcon />}
         className="green-toast"
-      />
-      <div className="milk-grid">
+        />
+        <div className="milk-grid">
         {selectedMilk === null ? (
-          <div className="search-container">
-            <input
-              className="search-input"
-              type="text"
-              placeholder="Search milk..."
-              onChange={handleSearch}
-            />
-            <p>{numOfMilks} products</p>
-          </div>
+            <form className="search-container">
+            <label>
+                <input
+                className="search-input"
+                type="text"
+                placeholder="Search milk..."
+                onChange={handleSearch}
+                />
+                <p>{numOfMilks} products</p>
+            </label>
+            </form>
         ) : null}
         {selectedMilk ? (
-          <div className="milk-card">
+            <article className="milk-card">
             <div className="milk-card-img-container">
-              <img src={MilkImage} alt="milk" className="milk-card-img" />
+                <img src={MilkImage} alt="milk" className="milk-card-img" />
             </div>
             <div className="milk-card-info-container">
-              <div className="milk-card-name">{selectedMilk.name}</div>
-              <div className="milk-card-type-storage-container">
-                <div className="milk-card-type">{selectedMilk.type}</div>
-                <div
-                  className={`milk-card-storage ${
-                    selectedMilk.storage < 10 ? "red" : ""
-                  }`}
-                ></div>
-              </div>
-            </div>
-          </div>
-        ) : (
-          filteredMilkData.map((milk) => (
-            <div className="milk-card" onClick={() => setSelectedMilk(milk)}>
-              <div className="milk-card-img-container">
-                <img src={MilkImage} alt="milk" className="milk-card-img" />
-              </div>
-              <div className="milk-card-info-container">
-                <div className="milk-card-name">{milk.name}</div>
+                <h2 className="milk-card-name">{selectedMilk.name}</h2>
                 <div className="milk-card-type-storage-container">
-                  <div className="milk-card-type">{milk.type}</div>
-                  <div
+                <span className="milk-card-type">{selectedMilk.type}</span>
+                <span
                     className={`milk-card-storage ${
-                      milk.storage < 10 ? "red" : ""
+                    selectedMilk.storage < 10 ? "red" : ""
                     }`}
-                  >
-                    {milk.storage} liters
-                  </div>
+                ></span>
                 </div>
-              </div>
             </div>
-          ))
+            </article>
+        ) : (
+            filteredMilkData.map((milk) => (
+            <article className="milk-card" onClick={() => setSelectedMilk(milk)}>
+                <div className="milk-card-img-container">
+                <img src={MilkImage} alt="milk" className="milk-card-img" />
+                </div>
+                <div className="milk-card-info-container">
+                <h2 className="milk-card-name">{milk.name}</h2>
+                <div className="milk-card-type-storage-container">
+                    <span className="milk-card-type">{milk.type}</span>
+                    <span
+                    className={`milk-card-storage ${
+                        milk.storage < 10 ? "red" : ""
+                    }`}
+                    >
+                    {milk.storage} liters
+                    </span>
+                </div>
+                </div>
+            </article>
+            ))
         )}
         {selectedMilk && (
-          <Order milk={selectedMilk} setSelectedMilk={setSelectedMilk} />
-        )}{" "}
-      </div>
-    </div>
-  );
+            <Order milk={selectedMilk} setSelectedMilk={setSelectedMilk} />
+        )}
+        </div>
+    </section>
+);
+
 };
 
 export default MilkList;
