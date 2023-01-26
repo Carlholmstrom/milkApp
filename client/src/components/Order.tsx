@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { IMilkData } from "./MilkList";
 import { toast } from "react-toastify";
 import "../styles/Order.css";
+import { Typography, FormControl, InputLabel, Input, Button } from "@mui/material";
+
 
 interface IProps {
   milk: IMilkData;
   setSelectedMilk: (milk: IMilkData | null) => void;
+  updateMilkData: (milk: IMilkData) => void;
 }
 
-const Order = ({ milk, setSelectedMilk }: IProps) => {
+const Order = ({ milk, setSelectedMilk, updateMilkData }: IProps) => {
   const [orderAmount, setOrderAmount] = useState(0);
   const [detailsMilk, setDetailsMilk] = useState(milk);
 
@@ -17,7 +20,7 @@ const Order = ({ milk, setSelectedMilk }: IProps) => {
   };
 
   const handleOrderClick = async () => {
-    if (orderAmount > 0) {
+    if (orderAmount > 0 && orderAmount < detailsMilk.storage) {
       try {
         const updatedStorage = detailsMilk.storage - orderAmount;
         const response = await fetch(
@@ -31,7 +34,9 @@ const Order = ({ milk, setSelectedMilk }: IProps) => {
         if (response.ok) {
           toast.success("Order placed successfully!");
           setDetailsMilk({ ...detailsMilk, storage: updatedStorage });
+          updateMilkData({ ...detailsMilk, storage: updatedStorage });
         } else {
+            toast.error("Error while processing order");
           throw new Error("Error placing order");
         }
       } catch (err) {
@@ -41,35 +46,34 @@ const Order = ({ milk, setSelectedMilk }: IProps) => {
   };
 
   return (
-    <section>
-      <h2 className="order__name">{milk.name}</h2>
-      <p className="order__type">{detailsMilk.type}</p>
-      <p className={`order__storage ${detailsMilk.storage < 10 ? "red" : ""}`}>
-        {detailsMilk.storage} liters
-      </p>
-      <label>
-        Quantity (liters): {orderAmount}
-        <input
-          type="range"
+    <form>
+      <Typography sx={{ m: 1 }} variant="h5" align="left" >{milk.name}</Typography>
+      <Typography sx={{ m: 1 }} variant="body1" align="left" >{detailsMilk.type}</Typography>
+      <Typography sx={{ m: 1 }} variant="body1" align="left" >{detailsMilk.storage} liters in stock
+      </Typography>
+      <FormControl>
+        <InputLabel sx={{ mt: 2, mb: 0.9}} id="quantity-label">Quantity (liters)</InputLabel>
+        <Input sx={{ m: 1, width: 150, height: 40 }}
+          type="number"
           value={orderAmount}
           onChange={handleOrderAmountChange}
-          min={1}
-          max={detailsMilk.storage}
+          inputProps={{
+            min: 1,
+            max: detailsMilk.storage
+          }}
         />
-      </label>
-      <div className="order__btn-container">
-        <button className="order__btn" onClick={handleOrderClick}>
+      </FormControl>
+      
+        <Button sx={{ m: 2 }} variant="contained" color="primary" onClick={handleOrderClick}>
           Order
-        </button>
-        <button
-          className="order__back-btn"
-          onClick={() => setSelectedMilk(null)}
-        >
+        </Button>
+        <Button sx={{ m: 2 }} variant="contained" color="secondary" onClick={() => setSelectedMilk(null)}>
           Back
-        </button>
-      </div>
-    </section>
+        </Button>
+      
+    </form>
   );
+
 };
 
 export default Order;

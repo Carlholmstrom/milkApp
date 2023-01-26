@@ -1,7 +1,7 @@
 using server.Data;
 using server.Models;
 using Microsoft.EntityFrameworkCore;
-
+using server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +11,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddDbContext<MilkDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MilkDbContext") ?? throw new InvalidOperationException("Connection string 'MilkDbContext' not found.")));
-
+builder.Services.AddScoped<IMilkRepository, MilkRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors();

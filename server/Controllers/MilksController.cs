@@ -14,39 +14,31 @@ namespace server.Controllers
     [ApiController]
     public class MilksController : ControllerBase
     {
-        private readonly MilkDbContext _context;
+        private readonly IMilkRepository _milkRepository;
 
-        public MilksController(MilkDbContext context)
+        public MilksController(IMilkRepository milkRepository)
         {
-            _context = context;
+            _milkRepository = milkRepository;
         }
 
         // GET: api/Milks
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Milk>>> GetMilks()
         {
-            if (_context.Milks == null)
-            {
-                return NotFound();
-            }
-            return await _context.Milks.ToListAsync();
+            var milks = await _milkRepository.GetAll();
+            return Ok(milks);
         }
+
 
         // GET: api/Milks/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Milk>> GetMilk(string id)
         {
-            if (_context.Milks == null)
-            {
-                return NotFound();
-            }
-            var milk = await _context.Milks.FindAsync(id);
-
+            var milk = await _milkRepository.Get(id);
             if (milk == null)
             {
                 return NotFound();
             }
-
             return milk;
         }
 
@@ -55,71 +47,15 @@ namespace server.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<Milk>> PutMilk(string id, [FromBody] Milk milk)
         {
-            if (id != milk.Id)
+            var result = await _milkRepository.Update(id, milk);
+            if (result == null)
             {
                 return NotFound();
             }
-
-            _context.Entry(milk).State = EntityState.Modified;
-
-            await _context.SaveChangesAsync();
-
-            return Ok(milk);
+            return Ok(result);
         }
 
 
-        // POST: api/Milks
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*    [HttpPost]
-           public async Task<ActionResult<Milk>> PostMilk(Milk milk)
-           {
-             if (_context.Milks == null)
-             {
-                 return Problem("Entity set 'MilkDbContext.Milks'  is null.");
-             }
-               _context.Milks.Add(milk);
-               try
-               {
-                   await _context.SaveChangesAsync();
-               }
-               catch (DbUpdateException)
-               {
-                   if (MilkExists(milk.Id))
-                   {
-                       return Conflict();
-                   }
-                   else
-                   {
-                       throw;
-                   }
-               }
-
-               return CreatedAtAction("GetMilk", new { id = milk.Id }, milk);
-           } */
-
-        // DELETE: api/Milks/5
-        /*   [HttpDelete("{id}")]
-          public async Task<IActionResult> DeleteMilk(string id)
-          {
-              if (_context.Milks == null)
-              {
-                  return NotFound();
-              }
-              var milk = await _context.Milks.FindAsync(id);
-              if (milk == null)
-              {
-                  return NotFound();
-              }
-
-              _context.Milks.Remove(milk);
-              await _context.SaveChangesAsync();
-
-              return NoContent();
-          } */
-
-        private bool MilkExists(string id)
-        {
-            return (_context.Milks?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
     }
 }
+

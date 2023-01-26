@@ -1,10 +1,24 @@
 import React, { useEffect, useState } from "react";
 import "../styles/MilkList.css";
-import MilkImage from "../assets/milk.png";
+import MilkImage from "../assets/rsz_milk.png";
 import Order from "./Order";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import {
+  TablePagination,
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Select,
+  SelectChangeEvent,
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Typography,
+  TextField,
+} from "@mui/material";
 
 export interface IMilkData {
   id: string;
@@ -18,6 +32,7 @@ const MilkList = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [filteredMilkData, setFilteredMilkData] = useState<IMilkData[]>([]);
   const [selectedMilk, setSelectedMilk] = useState<IMilkData | null>(null);
+  const [selectedType, setSelectedType] = useState<string>("");
 
   useEffect(() => {
     const getData = async () => {
@@ -39,69 +54,129 @@ const MilkList = () => {
     );
   }, [searchTerm, milkData]);
 
+  useEffect(() => {
+    setFilteredMilkData(
+      milkData.filter((milk) => {
+        if (selectedType === "") {
+          return true;
+        }
+        return milk.type === selectedType;
+      })
+    );
+  }, [selectedType, milkData]);
+
+  const handleTypeSelection = (event: SelectChangeEvent<string>) => {
+    setSelectedType(event.target.value);
+  };
+
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
+  };
+
+  const updateMilkData = (updatedMilk: IMilkData) => {
+    setMilkData((prevMilkData) =>
+      prevMilkData.map((milk) => {
+        if (milk.id === updatedMilk.id) {
+          return updatedMilk;
+        }
+        return milk;
+      })
+    );
   };
 
   const numOfMilks = filteredMilkData.length;
 
   return (
     <section className="milk__container">
-        <ToastContainer
+      <ToastContainer
         autoClose={3000}
         draggable={false}
         icon={<CheckCircleIcon />}
         className="green__toast"
-        />
-        <div className="milk__grid">
+      />
+      <div className="milk__grid">
         {selectedMilk === null ? (
-            <form className="milk__search">
+          <form className="milk__search">
             <label>
-                <input
+              <TextField
+                sx={{ m: 1, width: 300 }}
                 className="milk__search-input"
                 type="text"
                 placeholder="Search milk..."
                 onChange={handleSearch}
-                />
-                <p>{numOfMilks} products</p>
+              />
             </label>
-            </form>
+
+            <FormControl sx={{ m: 1, width: 300 }}>
+              <InputLabel>Types</InputLabel>
+              <Select
+                value={selectedType}
+                label="Filter by type"
+                onChange={handleTypeSelection}
+              >
+                <MenuItem value="">All</MenuItem>
+                {Array.from(new Set(milkData.map((milk) => milk.type))).map(
+                  (type) => (
+                    <MenuItem value={type}>{type}</MenuItem>
+                  )
+                )}
+              </Select>
+            </FormControl>
+            <div className="milk__counter">
+              <p>{numOfMilks} milks</p>
+            </div>
+          </form>
         ) : null}
         {selectedMilk ? (
-            <article className="milk__card">
+          <article className="milk__card">
             <div className="milk__card-img-container">
-                <img src={MilkImage} alt="milk" className="milk__card-img" />
+              <img src={MilkImage} alt="milk" className="milk__card-img" />
             </div>
-            </article>
+          </article>
         ) : (
-            filteredMilkData.map((milk) => (
-            <article className="milk__card" onClick={() => setSelectedMilk(milk)}>
-                <div className="milk__card-img-container">
-                <img src={MilkImage} alt="milk" className="milk__card-img" />
-                </div>
-                <div className="milk__card-info-container">
-                <h2 className="milk__card-name">{milk.name}</h2>
-                <div className="milk__card-type-storage-container">
+          filteredMilkData.map((milk) => (
+            <Card sx={{ width: 300, m: 2 }}>
+              <CardActionArea onClick={() => setSelectedMilk(milk)}>
+                <CardMedia
+                  component="img"
+                  height="250"
+                  width="150"
+                  image={MilkImage}
+                  alt="milk"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="subtitle1" component="div">
+                    {milk.name}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    className="milk__card-type-storage-container"
+                  >
                     <span className="milk__card-type">{milk.type}</span>
                     <span
-                    className={`milk__card-storage ${
+                      className={`milk__card-storage ${
                         milk.storage < 10 ? "red" : ""
-                    }`}
+                      }`}
                     >
-                    {milk.storage} liters
+                      {milk.storage} liters
                     </span>
-                </div>
-                </div>
-            </article>
-            ))
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          ))
         )}
         {selectedMilk && (
-            <Order milk={selectedMilk} setSelectedMilk={setSelectedMilk} />
+          <Order
+            milk={selectedMilk}
+            setSelectedMilk={setSelectedMilk}
+            updateMilkData={updateMilkData}
+          />
         )}
-        </div>
+      </div>
     </section>
-);
-
+  );
 };
 
 export default MilkList;

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Alegreya&display=swap");
+
 .milk__container {
   display: flex;
   justify-content: center;
@@ -23,7 +25,6 @@
   margin: 10px;
   padding: 10px;
   cursor: pointer;
-
 }
 
 .milk__card-img {
@@ -69,27 +70,17 @@
   text-align: center;
 }
 
-.milk__search p{
+.milk__search p {
   text-align: left;
   font-weight: bold;
   margin-bottom: 10px;
 }
-
-
-.milk__search-input {
-  height: 50px;
-  width: 300px;
-  font-size: 14px;
-  background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png);
-  background-repeat: no-repeat;
-  background-position: left center;
-  padding-left: 40px;
-  background-color: #fff;
-  border: 2px solid #ccc;
-  box-shadow: none;
-  border-radius: 10px;
-  margin-bottom: 10px;
-
+.milk__counter p {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 10px;
+  font-family: "Alegraya";
 }
 
 @media (max-width: 768px) {
@@ -102,6 +93,4 @@
     margin: 24px;
     padding: 24px;
   }
-  
 }
-
