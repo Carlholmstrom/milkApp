@@ -4,10 +4,10 @@ import MilkList from './components/MilkList';
 
 function App() {
   return (
-    <div className="App">
+    <>
     <Header />
     <MilkList />
-    </div>
+    </>
   );
 }
 

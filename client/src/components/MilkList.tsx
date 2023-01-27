@@ -6,7 +6,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import {
-  TablePagination,
   InputLabel,
   MenuItem,
   FormControl,
@@ -90,27 +89,27 @@ const MilkList = () => {
 
   return (
     <section>
-      <Container className="milk__container">
+      <Container>
         <ToastContainer
           autoClose={3000}
           draggable={false}
           icon={<CheckCircleIcon />}
           className="green__toast"
         />
-        <Grid container className="milk__grid">
+        <Grid container justifyContent="center" sx={{ mt: 3}}>
           {selectedMilk === null ? (
             <form className="milk__search">
               <label>
                 <TextField
                   sx={{ m: 1, width: 300 }}
-                  className="milk__search-input"
                   type="text"
                   placeholder="Search milk..."
                   onChange={handleSearch}
                 />
               </label>
+              
               <FormControl>
-                <InputLabel>Milk Type</InputLabel>
+                <InputLabel>Filter</InputLabel>
                 <Select
                   sx={{ m: 1, width: 300 }}
                   value={selectedType}
@@ -126,7 +125,7 @@ const MilkList = () => {
                 </Select>
               </FormControl>
               <div className="milk__counter">
-                <p>{numOfMilks} milks</p>
+                <p>Showing {numOfMilks} milks</p>
               </div>
             </form>
           ) : null}
@@ -139,7 +138,7 @@ const MilkList = () => {
           ) : (
             filteredMilkData.map((milk) => (
               <Grid item xs={12} sm={6} md={6} lg={4}>
-                <Card sx={{ m: 2, p:1}}>
+                <Card sx={{ m: 2}}>
                   <CardActionArea onClick={() => setSelectedMilk(milk)}>
                     <CardMedia
                       component="img"

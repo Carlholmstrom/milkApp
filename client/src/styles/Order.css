@@ -1,114 +1,14 @@
 .order__btn-container {
-  margin-top: 10px;
-}
-
-section {
-  text-align: left;
-}
-
-input {
-  margin-left: 10px;
-}
-
-p {
-  font-size: 20px;
-  margin-bottom: 15px;
-}
-
-label {
-  font-size: 20px;
-}
-
-.order__storage {
-  text-align: left;
-  color: #c2c09f;
-  font-size: 18px;
-}
-.order__storage.red {
-  color: #b8797f;
-}
-
-.order__card-name {
-  font-size: 16px;
-  margin-bottom: 8px;
-  margin-top: 8px;
-  font-weight: bold;
-}
-
-.order__type {
-  text-align: left;
-  font-size: 18px;
-  color: #959595;
-}
-
-.order__btn {
-  align-items: center;
-  background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 0.4rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.85);
-  cursor: pointer;
-  display: inline-flex;
-  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
-    Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  justify-content: center;
-  line-height: 1.25;
-  min-height: 3rem;
-  margin: 25px 0px;
-  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
-  position: relative;
-  text-decoration: none;
-  transition: all 250ms;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: baseline;
-  width: auto;
-}
-
-.order__btn:hover,
-.order__btn:focus {
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: rgba(0, 0, 0, 0.65);
-}
-
-.order__btn:hover {
-  transform: translateY(-1px);
-}
-
-.order__btn:active {
-  background-color: #f0f0f1;
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
-  color: rgba(0, 0, 0, 0.65);
-  transform: translateY(0);
-}
-
-.order__back-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 6px 14px;
-  font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
-  border-radius: 6px;
-  color: #3d3d3d;
-  background: #fff;
-  border: none;
-  box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  margin-top: 5px;
-  cursor: pointer;
+  margin-top: 30px;
 }
 
-.order__back-btn:focus {
-  box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1),
-    0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
-  outline: 0;
+form{
+    margin-top: 4em;
 }
+img{
+    margin-top: 4em;
+}
+

@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import { IMilkData } from "./MilkList";
 import { toast } from "react-toastify";
-import "../styles/Order.css";
-import { Typography, FormControl, InputLabel, Input, Button } from "@mui/material";
+import MilkImage from "../assets/rsz_milk.png";
 
+import "../styles/Order.css";
+import {
+  Typography,
+  FormControl,
+  InputLabel,
+  Input,
+  Button,
+  Box,
+} from "@mui/material";
 
 interface IProps {
   milk: IMilkData;
@@ -36,7 +44,7 @@ const Order = ({ milk, setSelectedMilk, updateMilkData }: IProps) => {
           setDetailsMilk({ ...detailsMilk, storage: updatedStorage });
           updateMilkData({ ...detailsMilk, storage: updatedStorage });
         } else {
-            toast.error("Error while processing order");
+          toast.error("Error while processing order");
           throw new Error("Error placing order");
         }
       } catch (err) {
@@ -47,12 +55,12 @@ const Order = ({ milk, setSelectedMilk, updateMilkData }: IProps) => {
 
   return (
     <form>
-      <Typography sx={{ m: 1 }} variant="h5" align="left" >{milk.name}</Typography>
-      <Typography sx={{ m: 1 }} variant="body1" align="left" >{detailsMilk.type}</Typography>
-      <Typography sx={{ m: 1 }} variant="body1" align="left" >{detailsMilk.storage} liters in stock
+      <Typography sx={{ m: 1, ml: 3 }} variant="h5" align="left" >{milk.name}</Typography>
+      <Typography sx={{ m: 1, ml: 3 }} variant="body1" align="left" >{detailsMilk.type}</Typography>
+      <Typography sx={{ m: 1, ml: 3 }} variant="body1" align="left" >{detailsMilk.storage} liters in stock
       </Typography>
-      <FormControl>
-        <InputLabel sx={{ mt: 2, mb: 0.9}} id="quantity-label">Quantity (liters)</InputLabel>
+      <FormControl sx={{ml: 3, mt: 2}}>
+        <InputLabel id="quantity-label">Quantity (liters)</InputLabel>
         <Input sx={{ m: 1, width: 150, height: 40 }}
           type="number"
           value={orderAmount}
@@ -64,16 +72,15 @@ const Order = ({ milk, setSelectedMilk, updateMilkData }: IProps) => {
         />
       </FormControl>
       
-        <Button sx={{ m: 2 }} variant="contained" color="primary" onClick={handleOrderClick}>
+        <Button sx={{ml: 3, m: 1, mt: 4 }} variant="contained" color="primary" onClick={handleOrderClick}>
           Order
         </Button>
-        <Button sx={{ m: 2 }} variant="contained" color="secondary" onClick={() => setSelectedMilk(null)}>
+        <Button sx={{ml: 3, m: 1, mt: 4 }} variant="contained" color="secondary" onClick={() => setSelectedMilk(null)}>
           Back
         </Button>
       
     </form>
   );
-
 };
 
 export default Order;
