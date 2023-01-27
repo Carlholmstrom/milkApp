@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { IMilkData } from "./MilkList";
 import { toast } from "react-toastify";
-import MilkImage from "../assets/rsz_milk.png";
 
 import "../styles/Order.css";
 import {
@@ -10,7 +9,6 @@ import {
   InputLabel,
   Input,
   Button,
-  Box,
 } from "@mui/material";
 
 interface IProps {
@@ -51,6 +49,7 @@ const Order = ({ milk, setSelectedMilk, updateMilkData }: IProps) => {
         console.error(err);
       }
     }
+    
   };
 
   return (
