@@ -9,8 +9,6 @@ public class MilkDbContext : DbContext
         : base(options)
     {
     }
-
     public DbSet<Milk> Milks { get; set; } = null!;
-    //public DbSet<MilkInfo> MilkInfos { get; set; } = null!;
 
 }

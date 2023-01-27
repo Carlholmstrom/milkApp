@@ -13,15 +13,9 @@ public class MilkRepository : IMilkRepository
         _context = context;
     }
 
-    public async Task<IEnumerable<Milk>> GetAll()
-    {
-        return await _context.Milks.ToListAsync();
-    }
+    public async Task<IEnumerable<Milk>> GetAll() => await _context.Milks.ToListAsync();
 
-    public async Task<Milk> Get(string id)
-    {
-        return await _context.Milks.FindAsync(id);
-    }
+    public async Task<Milk> Get(string id) => await _context.Milks.FindAsync(id);
 
 
     public async Task<Milk> Update(string id, Milk milk)

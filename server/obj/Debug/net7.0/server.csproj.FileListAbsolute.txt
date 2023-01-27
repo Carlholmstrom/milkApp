@@ -34,7 +34,6 @@
 /Users/admin/Documents/salt-pgp-projects/milkApp/server/obj/Debug/net7.0/server.pdb
 /Users/admin/Documents/salt-pgp-projects/milkApp/server/obj/Debug/net7.0/server.genruntimeconfig.cache
 /Users/admin/Documents/salt-pgp-projects/milkApp/server/obj/Debug/net7.0/ref/server.dll
-/Users/admin/Documents/salt-pgp-projects/milkApp/server/bin/Debug/net7.0/Resources/milk.json
 /Users/admin/Documents/salt-pgp-projects/milkApp/server/bin/Debug/net7.0/Humanizer.dll
 /Users/admin/Documents/salt-pgp-projects/milkApp/server/bin/Debug/net7.0/MessagePack.dll
 /Users/admin/Documents/salt-pgp-projects/milkApp/server/bin/Debug/net7.0/MessagePack.Annotations.dll
@@ -277,3 +276,4 @@
 /Users/admin/Documents/salt-pgp-projects/milkApp/server/bin/Debug/net7.0/Mono.TextTemplating.dll
 /Users/admin/Documents/salt-pgp-projects/milkApp/server/bin/Debug/net7.0/System.CodeDom.dll
 /Users/admin/Documents/salt-pgp-projects/milkApp/server/bin/Debug/net7.0/System.Memory.Data.dll
+/Users/admin/Documents/salt-pgp-projects/milkApp/server/bin/Debug/net7.0/Data/milk.json
