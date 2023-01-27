@@ -66,8 +66,8 @@ const MilkList = () => {
     );
   }, [selectedType, milkData]);
 
-  const handleTypeSelection = (event: SelectChangeEvent<string>) => {
-    setSelectedType(event.target.value);
+  const handleTypeSelection = (e: SelectChangeEvent<string>) => {
+    setSelectedType(e.target.value);
   };
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
