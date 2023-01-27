@@ -19,7 +19,7 @@ Customer can click on a milk and then place an order
 ### Backend:
 
 - .NET webAPI 
-- Docker
+- Entity Framework
 
 ### Frontend Specific:
 
