@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/MilkList.css";
 import MilkImage from "../assets/rsz_milk.png";
 import Order from "./Order";

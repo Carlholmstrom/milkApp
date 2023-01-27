@@ -9,5 +9,6 @@ public class Milk
     public int Storage { get; set; }
 
     public string? Id { get; set; }
+
 }
 

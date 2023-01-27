@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Alegreya&display=swap");
 
-.header-container {
+.header__container {
   background-color: #fff;
   color: #fabbb6;
   padding: 10px;
@@ -12,7 +12,7 @@
   z-index: 1;
 }
 
-.header-title {
+.header__title {
   margin: 0;
   font-size: 3.5em;
   margin-bottom: 10px;

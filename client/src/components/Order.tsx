@@ -54,13 +54,13 @@ const Order = ({ milk, setSelectedMilk, updateMilkData }: IProps) => {
 
   return (
     <form>
-      <Typography sx={{ m: 1, ml: 3 }} variant="h5" align="left" >{milk.name}</Typography>
+      <Typography sx={{ m: 1, ml: 3, mt: 5 }} variant="h5" align="left" >{milk.name}</Typography>
       <Typography sx={{ m: 1, ml: 3 }} variant="body1" align="left" >{detailsMilk.type}</Typography>
       <Typography sx={{ m: 1, ml: 3 }} variant="body1" align="left" >{detailsMilk.storage} liters in stock
       </Typography>
       <FormControl sx={{ml: 3, mt: 2}}>
         <InputLabel id="quantity-label">Quantity (liters)</InputLabel>
-        <Input sx={{ m: 1, width: 150, height: 40 }}
+        <Input sx={{ m: 0.5, width: 150, height: 40 }}
           type="number"
           value={orderAmount}
           onChange={handleOrderAmountChange}
