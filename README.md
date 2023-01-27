@@ -1,6 +1,6 @@
 # Milk Store App
 
-A simple application for an online milk store.
+A small application for an online milk store.
 
 ### Homepage:
 [![Screenshot-2023-01-27-at-13-05-29.png](https://i.postimg.cc/TYRbZtwh/Screenshot-2023-01-27-at-13-05-29.png)](https://postimg.cc/w3G3NcDd)
